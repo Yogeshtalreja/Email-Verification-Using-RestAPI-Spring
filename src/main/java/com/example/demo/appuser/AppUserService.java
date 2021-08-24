@@ -19,4 +19,8 @@ private final static String USER_NOT_FOUND_MSG= "User with email %s not found";
         return appUserRepository.findByEmail(email)
                 .orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG,email)));
     }
+
+    public String signUpUser(AppUser appUser){
+        return "";
+    }
 }
