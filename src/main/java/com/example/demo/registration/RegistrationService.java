@@ -35,7 +35,7 @@ public class RegistrationService {
                          AppUserRole.USER
                 )
         );
-        String Link = "http://localhost:9091/api/v1/registration/conform?token="+token;
+        String Link = "http://localhost:9091/api/v1/registration/confirm?token="+token;
        emailSender.send(request.getEmail(),buildEmail(request.getFirstName(),Link));
        return token;
     }

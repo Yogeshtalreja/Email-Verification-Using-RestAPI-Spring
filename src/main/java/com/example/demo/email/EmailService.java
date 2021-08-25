@@ -1,6 +1,6 @@
 package com.example.demo.email;
 
-import com.fasterxml.jackson.core.json.UTF8JsonGenerator;
+
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -29,9 +30,13 @@ private final ConfirmationTokenService confirmationTokenService;
     public String signUpUser(AppUser appUser){
 
         Boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
+       // Optional<AppUser> appUser1 = appUserRepository.findByEmail(appUser.getEmail());
+
         if(userExists){
             throw new IllegalStateException("Email Already Taken");
         }else {
+
+
            String encodedPassword =  bCryptPasswordEncoder.encode(appUser.getPassword());
             appUser.setPassword(encodedPassword);
         }
@@ -46,7 +51,7 @@ private final ConfirmationTokenService confirmationTokenService;
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
-        return "It Works";
+        return token;
 
     }
 
